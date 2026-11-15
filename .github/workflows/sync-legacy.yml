@@ -20,12 +20,13 @@ jobs:
           fetch-depth: 0
           path: upstream
 
+      
       - name: Push legacy to fork
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-
-          git -C upstream push \
+          git -C upstream push --force \
             "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
             HEAD:refs/heads/legacy
+
